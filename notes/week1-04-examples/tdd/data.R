@@ -5,23 +5,23 @@ setwd(dirname(getActiveDocumentContext()$path))
 
 library(readxl)
 library(DT)
-library(dplyr)
+library(dplyr) # grammar of data manipulation
 library(pander)
 library(writexl)
 epsilon=1000000
 library(reshape)
-library(ggplot2)
+library(ggplot2) # for graphs --> 
 library(psych)
 library(lubridate)
 
-
+# read rawdata
 df=read_excel("data.xlsx",sheet="Capex",skip = 0)
 
 
 df = df%>%
   select(Items,System, Operated_by, Vendors, Area, Level, Zone, Facility, Discipline, YearBuilt, S, CO, SE, HE,R,Findings,Interventions,IS, Quantity, Unit, InterPer, Cost, Probability, Year, Binary_highrisk, Binary_option, NPV, NPV_HighRisk, NPV_Option)
 
-glimpse(df)
+Viewglimpse(df)
 
 df$System <- as.factor(df$System)
 library(purrr) #
@@ -42,6 +42,8 @@ ggplot(missing, aes(x = reorder(Variable, -value),y = value)) +
   geom_bar(stat = "identity", fill = "salmon") + 
   coord_flip()
 
+###
+#
 
 
 
